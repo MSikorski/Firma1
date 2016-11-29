@@ -17,8 +17,6 @@ public class Baza {
 	private static Connection conn;
 	private static Statement stat;
 
-	static int p = 0;
-
 	public static void zainicjuj() {
 		try {
 			Class.forName(Baza.DRIVER);
@@ -69,12 +67,11 @@ public class Baza {
 			int i = 0;
 			ResultSet result = stat.executeQuery("SELECT * FROM pracownicy");
 			while (result.next()) {
-				pracownik[0].ilu = p;
+				pracownik[0].ilu = i+1;
 				pracownik[i].id = result.getInt("id_pracownika");
 				pracownik[i].imie = result.getString("imie");
 				pracownik[i].nazwisko = result.getString("nazwisko");
 				pracownik[i].wiek = result.getString("wiek");
-				p++;
 				i++;
 			}
 			for (int j = i; j < pracownik.length; j++) {
@@ -101,10 +98,6 @@ public class Baza {
 	public static void pracownikWyzerujId(Pracownik[] pracownik) {
 		Pracownik[] pracownik1 = new Pracownik[pracownik.length];
 		// for(int i=0; )
-	}
-
-	public static int ilu() {
-		return p;
 	}
 
 	public static void restart() {
