@@ -91,6 +91,7 @@ public class Baza {
 			PreparedStatement prepStmt = conn.prepareStatement("DELETE FROM pracownicy WHERE id_pracownika = ?;");
 			prepStmt.setInt(1, id);
 			prepStmt.execute();
+			System.out.println("Usunieto pracownika o id "+id);
 		} catch (SQLException e) {
 			e.printStackTrace();
 			System.err.println("Problem z usunieciem pracownika");
@@ -110,6 +111,7 @@ public class Baza {
 		try {
 			PreparedStatement prepStmt = conn.prepareStatement("DROP TABLE pracownicy");
 			prepStmt.execute();
+			System.out.println("Zrestartowano baze");
 		} catch (SQLException e) {
 			e.printStackTrace();
 			System.err.println("Problem z zrestartowaniem bazy");

@@ -3,12 +3,9 @@ package grafika;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
 import firma.Baza;
-import firma.Pracownik;
 
 public class DodajListener implements ActionListener {
 	private Gui gui;
@@ -44,10 +41,9 @@ public class DodajListener implements ActionListener {
 	}
 
 	public void actionPerformed(ActionEvent e) {
-		System.out.println(1);
-
 		if (przycisk == 1) {
 			if (e.getSource() == panelPrzyciskow.pDodaj) {
+				System.out.println("Kliknieto przycisk dodania pracownika");
 				SwingUtilities.invokeLater(new Runnable() {
 					@Override
 
@@ -56,6 +52,7 @@ public class DodajListener implements ActionListener {
 					}
 				});
 			} else if (e.getSource() == panelPrzyciskow.pUsun) {
+				System.out.println("Kliknieto przycisk usuwania pracownika");
 
 				SwingUtilities.invokeLater(new Runnable() {
 					@Override
@@ -65,6 +62,7 @@ public class DodajListener implements ActionListener {
 					}
 				});
 			} else if (e.getSource() == panelPrzyciskow.pRestart) {
+				System.out.println("Kliknieto przycisk restartowania bazy");
 				Baza.restart();
 				Baza.zainicjuj();
 				gui.Restart();
@@ -72,8 +70,8 @@ public class DodajListener implements ActionListener {
 		}
 		if (przycisk == 2) {
 			if (e.getSource() == oknoDodawania.Dodaj) {
-
-				System.out.println(2);
+				System.out.println("Kliknieto przycisk dodaj");
+				
 				if (!((oknoDodawania.Imie.getText() == "") && (oknoDodawania.Nazwisko.getText() == "")
 						&& (oknoDodawania.Wiek.getText() == ""))) {
 					Baza.dodajPracownika(oknoDodawania.Imie.getText(), oknoDodawania.Nazwisko.getText(),
@@ -85,6 +83,8 @@ public class DodajListener implements ActionListener {
 		}
 		if (przycisk == 3) {
 			if (e.getSource() == oknoUsuwania.Usun) {
+				System.out.println("Kliknieto przycisk usun");
+				
 				if (Integer.parseInt(oknoUsuwania.Id.getText()) > 0) {
 					oknoUsuwania.dispose();
 					Baza.pracownikUsun(Integer.parseInt(oknoUsuwania.Id.getText()));
